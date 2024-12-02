@@ -8,17 +8,17 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    return '<h1>Avalible Jobs</h1>';
+    $title = 'Available Jobs';
+    $jobs = [
+        'Software Developer',
+        'Data Analyst',
+        'Database Engineer',
+        'Wrestler'
+    ];
+    return view('jobs.index', compact('title', 'jobs'));
 })->name('jobs');
 
-Route::get('/test', function (Request $request) {
-    return [
-        'method' => $request->method(),
-        'url' => $request->url(),
-        'path' => $request->path(),
-        'fullUrl' => $request->fullUrl(),
-        'ip' => $request->ip(),
-        'userAgent' => $request->userAgent(),
-        'header' => $request->header(),
-    ];
+
+Route::get('/jobs/create', function () {
+    return view('jobs.create');
 });
